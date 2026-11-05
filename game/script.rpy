@@ -41,8 +41,19 @@ label start:
 
     # HUNTER's use explaination
     h "I am your 'Home Utility Network Tech Efficient Resource' or 'H.U.N.T.E.R.' for short!"
-    h "Would you like me to explain what I can do for you?"
-    
+    menu:
+        h "Would you like me to explain what I can do for you?"
+
+        "Yes!":
+            $ user_choice = True
+        "No..":
+            $ user_choice = False
+
+    if user_choice:
+        h "Fantastic!"
+    else:
+        h "That's alright! My tutorial will be here if needed!"
+ 
 
 # keeps game from closing
 $ renpy.pause(hard=True)
