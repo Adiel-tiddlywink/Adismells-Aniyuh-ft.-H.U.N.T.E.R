@@ -33,7 +33,7 @@ label start:
     h "Say it into your microphone!"
     
     # name input
-    $ user = renpy.input("LISTENING...")
+    $ user = renpy.input("LISTENING...", exclude=" 0123456789!@#$%^&*()_+{}|:,.;'\][]=-", exclude="HUNTER")
     if not user:
         $ user = "Vanessa"
 
@@ -53,8 +53,9 @@ label start:
         h "Fantastic!"
     else:
         h "That's alright! My tutorial will be here if needed!"
+
+        h "hi"
  
 
 # keeps game from closing
 $ renpy.pause(hard=True)
-
