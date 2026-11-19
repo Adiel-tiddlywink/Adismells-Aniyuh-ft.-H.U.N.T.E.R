@@ -8,14 +8,14 @@ label start:
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
 
-    scene intro_black_background
+scene intro_black_background
 
     # The ad codie:
-    "Here's the ad for your at home A.I. helper, H.U.N.T.E.R.!"
+"Here's the ad for your at home A.I. helper, H.U.N.T.E.R.!"
 
 
     # Owner getting the computer & testing it out
-    "Okay, let's test this nonsense..."
+"Okay, let's test this nonsense..."
 
 scene bg room_talking
 
@@ -29,24 +29,10 @@ h "Say it into your microphone!"
     
 scene bg room_quiet
 # name input
-label name_input:
 $ user = renpy.input("LISTENING...",exclude="0123456789!@#$%^&*()_+-=|;':\",./<>?")
-while True:
-
-    # Remove extra spaces at the beginning or end
-    $ user = user.strip()
-    
     # If the player left it completely blank, set it to Vanessa
-    if not user:
-        $ user = "Vanessa"
-        
-    # Check if the name is Hunter (converting to lowercase catches HUNTER, Hunter, hunter, etc.)
-    if user.lower() == "hunter":
-        h "Ah, ah. You can't use that name! Choose another!"
-    else:
-        jump name_input
-
-
+if not user:
+    $ user = "Vanessa"
 
 scene bg room_talking
 h "Greetings, [user]!"
@@ -70,10 +56,35 @@ if user_choice:
     h "I can also give news reports of what's happening locally or globally!"
     h "I know everything! Ask me anything! Perhaps you know the prototype model: Verity?"
 
+
 else:
     h "That's alright! My tutorial will be here if needed!"
 
+h "So, do you have any questions?"
 
+label questioning:
+
+menu:
+    "What's the weather like in 'town'?":
+        h ""
+        
+    "What should our meal plans be for today?":
+        h ""
+
+    "What's happening in 'town'?":
+        h ""
+
+    "Verity?":
+        window hide
+        show verityewwwww:
+            xpos 0.0
+            ypos 0.0
+            xysize(1920,1080)
+            alpha 0.0
+            linear 0.5 alpha 1.0
+
+h "Oops... wrong file."
+hide verityewwwww
 
 # keeps game from closing
 $ renpy.pause(hard=True)
